@@ -1,0 +1,42 @@
+# Config file for automatic testing at travis-ci.org
+
+language: python
+dist: xenial
+python:
+  - 3.7
+
+# Command to run tests, e.g. python setup.py test
+install:
+- pip install pipenv
+- pipenv install --system --deploy --ignore-pipfile
+
+stages:
+  - test
+  - name: answers
+    if: branch = master
+
+jobs:
+  include:
+    - stage: test
+      script: pytest -v
+      before_install:
+        - echo -e "machine github.com\n  login $CI_USER_TOKEN" > ~/.netrc
+      install:
+        - pipenv install --dev --ignore-pipfile --deploy
+      before_script: # code coverage tool
+         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+         - chmod +x ./cc-test-reporter
+         - ./cc-test-reporter before-build
+      script:
+         - pipenv run pytest --cov-report xml --cov-report term
+      after_script:
+        - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+    - stage: answers
+      before_install:
+        - echo -e "machine github.com\n  login $CI_USER_TOKEN" > ~/.netrc
+      # credentials entered at https://travis-ci.com/csci-e-29/YOUR_PSET_REPO_NAME/settings
+      script:
+        - python manage.py makemigrations
+        - python manage.py migrate
+        - python manage.py retrieve_financial_data
+        - python manage.py display_financial_data
