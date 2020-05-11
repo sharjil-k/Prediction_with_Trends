@@ -8,7 +8,7 @@ python:
 # Command to run tests, e.g. python setup.py test
 install:
 - pip install pipenv
-- pipenv install --system --deploy --ignore-pipfile
+- pipenv install --dev --ignore-pipfile --deploy
 
 stages:
   - test
@@ -38,5 +38,5 @@ jobs:
       script:
         - python manage.py makemigrations
         - python manage.py migrate
-        - python manage.py retrieve_financial_data
-        - python manage.py display_financial_data
+        - python manage.py get_data
+        - python manage.py model_predict
