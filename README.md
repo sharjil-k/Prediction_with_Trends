@@ -14,7 +14,7 @@ information so that the user is provided with a final model that incorporates be
 the user having to look for it explicitly. The final output of the project would be a model that forecasts the future
 as shown in the plot below. 
 
-![Alt text](images/profile_pic.JPG?raw="Title1")
+![Alt text](images/profile_pic.jpg?raw="Title1")
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -91,7 +91,7 @@ It should load and display the dataset above.
 The second command will run a prediction model and display a plot of the provided data as well as the 
 prediction into the future from the model.
 
-![Alt text](images/output_data.JPG?raw="Title3")
+![Alt text](images/output_data.jpg?raw="Title3")
 
 The output of this will look like the plot above. One is a prediction without using any trends data and the other 
 uses internet trends to improve predictions.
