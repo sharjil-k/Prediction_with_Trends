@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.com/shk305/Home_Display_Project.svg?branch=master)](https://travis-ci.com/shk305/Home_Display_Project)
+[![Build Status](https://travis-ci.com/shk305/Prediction_with_Trends.svg?branch=master)](https://travis-ci.com/shk305/Prediction_with_Trends)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/ed08d3b62bf4028200d3/maintainability)](https://codeclimate.com/github/shk305/Home_Display_Project/maintainability)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/85ad543a13938bc969ba/maintainability)](https://codeclimate.com/github/shk305/Prediction_with_Trends/maintainability)
 
 # Home Display
 
@@ -38,10 +37,25 @@ that someone can put on a wall.
 ## Initial setup
 To set up the project the user has to set up the environment and install all libraries required by typing:
 
+Make sure this environment variable is set:
+DATABASE_URL=sqlite:///data/db.sqlite
+```bash
+#In Windows :
+set DATABASE_URL=sqlite:///data/db.sqlite
+
+#In Linux:
+setenv  DATABASE_URL sqlite:///data/db.sqlite
+```
+
+
+Then cd into the directory of the repo and run the following commands:
 ```bash
 # In repo:
 pip install pipenv 
 pipenv install --dev
+
+python manage.py migrate         # Creates the databases and migrates built in Django user authentication table
+python manage.py createsuperuser # user:pass = admin:admin if you'd like
 ```
 From then on, the user can run the commands provided by the app or run the django server to investigate
 or debug the app. 
