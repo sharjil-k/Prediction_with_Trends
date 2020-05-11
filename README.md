@@ -96,8 +96,7 @@ prediction into the future from the model.
 The output of this will look like the plot above. One is a prediction without using any trends data and the other 
 uses internet trends to improve predictions.
  
-```
-Or if the user wants to debug or inspect the databases involved. The user can also run the django server
+Or if the user wants to debug or inspect the databases involved. The user can also run the django server:
 ```bash
 pipenv run python manage.py runserver
 ```
@@ -107,5 +106,5 @@ http://127.0.0.1:8000/predictwithtrends/api/modelingdata/
 
 
 ## High level Architecture
-######Note: Every part of the diagram below is not implemented as shown yet. It is a work in progress...
+Note: Every part of the diagram below is not implemented as shown yet. It is a work in progress...
 ![Alt text](images/Architecture.JPG?raw="Title4")
