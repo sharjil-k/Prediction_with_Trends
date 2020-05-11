@@ -91,7 +91,7 @@ It should load and display the dataset above.
 The second command will run a prediction model and display a plot of the provided data as well as the 
 prediction into the future from the model.
 
-![Alt text](images/output_data.JPG?raw="Title1")
+![Alt text](images/output_data.JPG?raw="Title3")
 
 The output of this will look like the plot above. One is a prediction without using any trends data and the other 
 uses internet trends to improve predictions.
@@ -108,4 +108,4 @@ http://127.0.0.1:8000/predictwithtrends/api/modelingdata/
 
 ## High level Architecture
 
-![Alt text](images/Architecture.JPG?raw="Title3")
+![Alt text](images/Architecture.JPG?raw="Title4")
