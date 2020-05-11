@@ -2,7 +2,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/85ad543a13938bc969ba/maintainability)](https://codeclimate.com/github/shk305/Prediction_with_Trends/maintainability)
 
-# Home Display
+# Forecasting with Trends
 
 
 
