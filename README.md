@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.com/shk305/Home_Display_Project.svg?branch=master)](https://travis-ci.com/shk305/Home_Display_Project)
+[![Build Status](https://travis-ci.com/shk305/Prediction_with_Trends.svg?branch=master)](https://travis-ci.com/shk305/Prediction_with_Trends)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/ed08d3b62bf4028200d3/maintainability)](https://codeclimate.com/github/shk305/Home_Display_Project/maintainability)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/85ad543a13938bc969ba/maintainability)](https://codeclimate.com/github/shk305/Prediction_with_Trends/maintainability)
 
 # Home Display
 
