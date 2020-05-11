@@ -21,6 +21,10 @@ urlpatterns = [
         "home_display/",
         include(("Home_Display.urls", "Home_Display"), namespace="Home_Display"),
     ),
+    path(
+        "predictwithtrends/",
+                      include(("PredictWithTrends.urls", "predictwithtrends"), namespace="predictwithtrends"),
+    ),
     path("docs/", include_docs_urls(title="Pset 6 API")),
 
 
