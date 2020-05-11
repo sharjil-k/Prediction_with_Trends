@@ -14,7 +14,7 @@ information so that the user is provided with a final model that incorporates be
 the user having to look for it explicitly. The final output of the project would be a model that forecasts the future
 as shown in the plot below. 
 
-![Alt text](images/output_data.JPG?raw="Title1")
+![Alt text](images/profile_pic.JPG?raw="Title1")
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -28,12 +28,12 @@ as shown in the plot below.
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Pre-Requisites
-To run on a basic dataset the app loads a dataset from Quandl. The user will need to create a free account at Quandl(ww.quandl.com
+To run on a basic dataset the app loads a dataset from Quandl. The user will need to create a free account at Quandl ([www.quandl.com](https://www.quandl.com/)
 ) and provide the API Key. 
  
 For example an environment variable like this:
 
-QUANDL_API_KEY = '29hyErz2TzC5oZFLCFke' 
+QUANDL_API_KEY = '29hyErz2TzC5oZFLCFke' Note: This is not a real key!
 
 The commands to set this is also described in the "Initial setup" section.
 
@@ -41,17 +41,17 @@ The commands to set this is also described in the "Initial setup" section.
 ## Initial setup
 To set up the project the user has to set up the environment and install all libraries required by typing:
 
-Then cd into the directory of the repo and run the following commands:
+
 ```bash
-# In repo:
+
 pip install pipenv 
+# cd into repo: 
 pipenv install --dev
 ```
 
 The app uses some basic dataset from QUANDL and also needs to have the database location specified by some environment
-variables.
-Make sure this environment variable is set:
-DATABASE_URL=sqlite:///data/db.sqlite
+variables:
+
 ```bash
 #In Windows :
 set DATABASE_URL=sqlite:///data/db.sqlite
@@ -64,12 +64,13 @@ setenv QUANDL_API_KEY '29hyErz2TzC5oZFLCFke' # This is an example, your key will
 
 Then we need to create the initial database and the user accounts.
 
-Then cd into the directory of the repo and run the following 
+cd into the directory of the repo and run the following 
 ```bash
+#In repo
 python manage.py migrate         # Creates the databases and migrates built in Django user authentication table
 python manage.py createsuperuser # user:pass = admin:admin if you'd like
 ```
-From then on, the user can run the commands described in the basic commands to run forecasts. 
+Once the database structure is created, the user can run the commands described in the basic commands to run forecasts. 
 
 ## Basic Commands 
 
@@ -81,18 +82,26 @@ python manage.py model_predict # Will model the data and output a plot with the 
 ```
 
 The first command will fetch a dataset from QUANDL and load it into the Django Database.
-It will load and display this dataset.
+
+
 ![Alt text](images/input_data.JPG?raw="Title2")
 
+It should load and display the dataset above.
+
 The second command will run a prediction model and display a plot of the provided data as well as the 
-prediction from the model..
+prediction into the future from the model.
+
+![Alt text](images/output_data.JPG?raw="Title1")
+
+The output of this will look like the plot above. One is a prediction without using any trends data and the other 
+uses internet trends to improve predictions.
  
 ```
 Or if the user wants to debug or inspect the databases involved. The user can also run the django server
 ```bash
 pipenv run python manage.py runserver
 ```
-Then the API data can be found at: 
+Then the API view can be found at: 
 http://127.0.0.1:8000/predictwithtrends/api/modelingdata/
 
 
