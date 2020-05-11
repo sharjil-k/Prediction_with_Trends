@@ -107,5 +107,5 @@ http://127.0.0.1:8000/predictwithtrends/api/modelingdata/
 
 
 ## High level Architecture
-
+######Note: Every part of the diagram below is not implemented as shown yet. It is a work in progress...
 ![Alt text](images/Architecture.JPG?raw="Title4")
