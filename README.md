@@ -2,17 +2,19 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/85ad543a13938bc969ba/maintainability)](https://codeclimate.com/github/shk305/Prediction_with_Trends/maintainability)
 
-# Forecasting with Trends
+# Forecasting with Internet Trends
 
 
 
 ## Objective
 
-This project is intended to provide useful and customizable information on a Home Display System.
-The information is based on the users personal data such as finacial accounts (Banks, Credit Cards, Stock Brokerage Accounts) as well as Fitness related tracking data such as number of steps in the last few days, fitness goals, weight history etc.
-The idea is that this app can aggregate all the relevant information and display it in a meaningful format. It is also capable of alerting the user based on events such as the users stocks loosing value, or the user achieving some fitness goal.  
+This project aims to provide a framework that will allow a user to improve their forecast on time series data using 
+internet trends. The ultimate goal of this is to completely automate the process of adding different internet trends 
+information so that the user is provided with a final model that incorporates beneficial internet trends data without 
+the user having to look for it explicitly. The final output of the project would be a model that forecasts the future
+as shown in the line below. 
 
-![Alt text](images/Stock_Account_Changed.JPG?raw="Title1")
+![Alt text](images/Architecture.JPG?raw="Title1")
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
