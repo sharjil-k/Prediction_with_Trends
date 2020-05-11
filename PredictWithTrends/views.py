@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet, ViewSet
 
-# Create your views here.
+from .models import ModelingData
+from .serializers import ModelingDataSerializer
+
+class ModelingDataView(ModelViewSet):
+    queryset = ModelingData.objects.all()
+    serializer_class= ModelingDataSerializer
+

@@ -6,7 +6,7 @@ import json
 from datetime import datetime
 
 
-from ...models import   DateTime, FinancialData
+from ...models import DateTime, FinancialData
 import argparse
 parser = argparse.ArgumentParser(description='data set')
 
