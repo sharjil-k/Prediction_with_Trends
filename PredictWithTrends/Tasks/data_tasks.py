@@ -18,7 +18,7 @@ class GetData(Task):
         return []
 
     def output(self):
-        return LocalTarget("data/_SUCCESS")
+        return LocalTarget("data/getdata_SUCCESS")
 
     def run(self):
         try:
@@ -54,10 +54,47 @@ class GetData(Task):
         with self.output().open('w') as f:
             f.write("Data Fetched Successfully")
 
+class AddTrends(Task):
+    def requires(self):
+        return [GetData()]
+
+    def output(self):
+        return LocalTarget("data/trends_SUCCESS")
+
+    def run(self):
+        df = pd.DataFrame(list(ModelingData.objects.all().values()))
+        dates = pd.DataFrame(list(DateTime.objects.all().values()))
+        df['ds'] = dates['date'].values
+
+        # Find the trends from internet using API.
+        # Not working right now so feed some trends data from a file
+
+        # Capture the valid trends data
+        trends = pd.read_csv("multiTimeline.csv")
+        trends.dtypes
+        df['trend2'] = 0
+        for index, row in trends.iterrows():
+            year = row['Month'].split('-')[0].lstrip("0")
+            month = row['Month'].split('-')[1].lstrip("0")
+            value = row['Trend']
+
+            for indexD, rowD in df.iterrows():
+                if (str(rowD['ds'].year) == str(year)) & (str(rowD['ds'].month) == str(month)):
+                    df['trend2'].iloc[indexD] = value
+
+        # Store everything back to the database
+        df_records = df.to_dict('records')
+        data_objs = [ModelingData(date=DateTime.objects.get(date=record['ds']), y= record['y'], trend1 = record['trend1'], trend2= record['trend2']) for record in df_records]
+        ModelingData.objects.all().delete()
+        ModelingData.objects.bulk_create(data_objs)
+
+
+        with self.output().open('w') as f:
+            f.write("Adding Trends Successfully")
 
 class ModelPredict(Task):
     def requires(self):
-        return [GetData()]
+        return [AddTrends()]
 
     def run(self):
         df = pd.DataFrame(list(ModelingData.objects.all().values()))
@@ -70,14 +107,14 @@ class ModelPredict(Task):
         # Train Model
         m = fbprophet.Prophet(changepoint_prior_scale=0.15)
         m_r = fbprophet.Prophet(changepoint_prior_scale=0.15)
-        m_r.add_regressor('trend1')
+        m_r.add_regressor('trend2')
         m.fit(data_train)
         m_r.fit(data_train)
 
         # Create future data set
         future = m.make_future_dataframe(periods=len(data_test), freq='1W')
         future.shape
-        future['trend1'] = df['trend1']
+        future['trend2'] = df['trend2']
 
         # The Forecast
         forecast = m.predict(future)
@@ -93,8 +130,7 @@ class ModelPredict(Task):
 
         plt.show()
 
-        with self.output().open('w') as f:
-            f.write("Data Fetched Successfully")
+
 
 def RunGetData():
     build([GetData()],local_scheduler=True)
